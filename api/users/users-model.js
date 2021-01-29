@@ -25,5 +25,7 @@ async function insert(user) {
 
 
 function remove(id) {
-  return null
+  return db('users')
+    .where('id', id)
+    .del()
 }
