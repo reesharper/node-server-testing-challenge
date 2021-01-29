@@ -20,10 +20,6 @@ server.get("/users", (req, res) => {
     });
 });
 
-server.get("/users/id", (req, res) => {
-  res.end()
-});
-
 server.post("/users", (req, res) => {
   Users.insert(req.body)
     .then(user => {
@@ -35,7 +31,13 @@ server.post("/users", (req, res) => {
 });
 
 server.delete("/users/:id", (req, res) => {
-  res.end()
+  Users.remove(req.params.id)
+    .then(() => {
+      res.status(200).json("user has been deleted")
+    })
+    .catch(err => {
+      res.status(400).json(err.message)
+    })
 });
 
 module.exports = server;

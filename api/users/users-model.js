@@ -4,15 +4,10 @@ module.exports = {
   insert,
   remove,
   getAll,
-  getById,
 }
 
 function getAll() {
   return db('users')
-}
-
-function getById(id) {
-  return null
 }
 
 async function insert(user) {
